@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maple-organization-deployment
+  namespace: maple-system
+  labels:
+    app: maple-organization
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maple-organization
+  template:
+    metadata:
+      labels:
+        app: maple-organization
+    spec:
+      containers:
+        - name: maple-organization-container
+          image: shobhittyagi1011/maple-organization-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8082
+          env:
+            - name: DB_URI
+              value: jdbc:postgresql://maple-organization-postgres-service:5402/maple-organization
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: maple-organization-secrets
+                  key: POSTGRES_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: maple-organization-secrets
+                  key: POSTGRES_PASSWORD
