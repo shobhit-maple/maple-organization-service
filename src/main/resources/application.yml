@@ -9,6 +9,7 @@ spring:
     url: ${DB_URI}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
   cloud:
     config:
       enabled: false
@@ -21,6 +22,16 @@ spring:
       expire-time-in-millis: 86400000
       secret-key: some-secret-key
 
+p6spy:
+  config:
+    logMessageFormat: com.p6spy.engine.logging.format.MultiLineFormat
+
+logging:
+  level:
+    io:
+      opentelemetry: DEBUG
+      opentelemetry.instrumentation.jdbc: DEBUG
+
 server:
   port: 8080
   compression:
@@ -29,6 +40,16 @@ server:
     min-response-size: 860
   error:
     include-stacktrace: always
+
+otel:
+  traces:
+    exporter: zipkin
+  exporter:
+    zipkin:
+      endpoint: http://maple-zipkin-service.maple-tracing.svc.cluster.local:9411/api/v2/spans
+  instrumentation:
+    jdbc:
+      enabled: true
 
 http:
   client:

@@ -31,7 +31,7 @@ spec:
             failureThreshold: 3
           env:
             - name: DB_URI
-              value: jdbc:postgresql://maple-organization-postgres-service:5402/maple-organization
+              value: jdbc:p6spy:postgresql://maple-organization-postgres-service:5402/maple-organization
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
