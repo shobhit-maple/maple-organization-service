@@ -65,7 +65,7 @@ dependencies {
 	implementation("org.apache.commons:commons-lang3:3.14.0")
 	implementation("commons-collections:commons-collections:3.2.2")
 
-	implementation("com.alviss:alviss-spring-boot-commons-starter:1.0.5")
+	implementation("com.alviss:alviss-spring-boot-commons-starter:1.0.7")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 

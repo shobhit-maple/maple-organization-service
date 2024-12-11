@@ -21,6 +21,21 @@ spring:
       expire-time-in-millis: 86400000
       secret-key: some-secret-key
 
+management:
+  endpoint:
+    prometheus:
+      enabled: true
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://maple-zipkin-service.maple-tracing.svc.cluster.local:9411/api/v2/spans
+  prometheus:
+    metrics:
+      export:
+        enabled: true
 server:
   port: 8080
   compression:
