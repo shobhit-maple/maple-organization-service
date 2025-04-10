@@ -1,7 +1,7 @@
 plugins {
 	id "java"
 	id "groovy"
-	id "org.springframework.boot" version "3.2.3"
+	id "org.springframework.boot" version "3.4.4"
 	id "io.spring.dependency-management" version "1.1.4"
 	id "org.unbroken-dome.test-sets" version "4.1.0"
 }
@@ -28,7 +28,7 @@ repositories {
 }
 
 ext {
-	set("springCloudVersion", "2023.0.0")
+	set("springCloudVersion", "2024.0.1")
 	set("testcontainersVersion", "1.24.0")
 	set("spockVersion", "2.4-M2-groovy-4.0")
 	set("mockServerVersion", "31.1-jre")
